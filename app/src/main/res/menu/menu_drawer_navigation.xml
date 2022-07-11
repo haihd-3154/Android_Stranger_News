@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_home"
+        android:checked="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/nav_search"
+        android:icon="@drawable/ic_saved_search"
+        android:title="@string/search"/>
+    <item
+        android:id="@+id/nav_news"
+        android:icon="@drawable/ic_newspaper"
+        android:title="@string/news"/>
+    <item
+        android:id="@+id/nav_saved"
+        android:icon="@drawable/ic_bookmark_border"
+        android:title="@string/saved"/>
+    <item
+        android:id="@+id/nav_categories"
+        android:icon="@drawable/ic_categories"
+        android:title="@string/categories"/>
+    <item
+        android:id="@+id/nav_sources"
+        android:icon="@drawable/ic_live_tv"
+        android:title="@string/sources"/>
+    <item
+        android:id="@+id/nav_language"
+        android:icon="@drawable/ic_language"
+        android:title="@string/languages"/>
+    <item
+        android:id="@+id/nav_countries"
+        android:icon="@drawable/ic_account_balance"
+        android:title="@string/countries"/>
+    <item
+        android:id="@+id/nav_setting"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/setting"/>
+    </group>
+</menu>

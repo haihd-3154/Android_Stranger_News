@@ -53,4 +53,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.0-alpha01")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.0-alpha01")
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.0-alpha01")
+    //Custom Drawer
+    implementation 'com.github.mindinventory:minavdrawer:1.2.2'
 }
