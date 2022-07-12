@@ -10,9 +10,6 @@ import java.lang.Exception
 open class BaseViewModel : ViewModel() {
 
     private var loadingCount = 0
-    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
-        errorResponse.value = exception
-    }
     val isLoading = MutableLiveData<Boolean>().apply { value = false }
     val errorResponse = MutableLiveData<Throwable?>().apply { value = null }
 
@@ -21,7 +18,7 @@ open class BaseViewModel : ViewModel() {
         onSuccess: (T) -> Unit = {},
         onError: (Exception) -> Unit = {},
         isShowLoading: Boolean = true
-    ) = viewModelScope.launch(coroutineExceptionHandler) {
+    ) = viewModelScope.launch{
         showLoading(isShowLoading)
         when (val asynchronousTasks = onRequest(this)) {
             is DataResult.Success -> onSuccess(asynchronousTasks.data)

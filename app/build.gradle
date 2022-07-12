@@ -1,7 +1,13 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'com.google.devtools.ksp'
 }
+
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
 android {
     compileSdk 32
@@ -14,6 +20,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "API_ACCESS_KEY", apikeyProperties['API_ACCESS_KEY'])
     }
 
     buildTypes {
@@ -32,6 +39,12 @@ android {
 
     buildFeatures {
         viewBinding = true
+    }
+
+    applicationVariants.all { variant ->
+        variant.sourceSets.java.each {
+            it.srcDirs += "build/generated/ksp/${variant.name}/kotlin"
+        }
     }
 }
 
@@ -55,4 +68,21 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.0-alpha01")
     //Custom Drawer
     implementation 'com.github.mindinventory:minavdrawer:1.2.2'
+    //Retrofit, Okhttp
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation "com.squareup.okhttp3:logging-interceptor:4.10.0"
+    //Room
+    implementation "androidx.room:room-ktx:2.4.2"
+    implementation "androidx.room:room-runtime:2.4.2"
+    ksp "androidx.room:room-compiler:2.4.2"
+    //Koin
+    implementation "io.insert-koin:koin-core:3.2.0"
+    implementation "io.insert-koin:koin-annotations:1.0.1"
+    implementation "io.insert-koin:koin-androidx-compose:3.2.0"
+    ksp "io.insert-koin:koin-ksp-compiler:1.0.1"
+    //Data Store
+    implementation "androidx.datastore:datastore-core:1.0.0"
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
 }

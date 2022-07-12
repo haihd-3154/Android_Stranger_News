@@ -1,4 +1,6 @@
 package com.example.strangernews.di
 
-class AppModule {
-}
+import org.koin.core.annotation.Module
+
+@Module
+class AppModule

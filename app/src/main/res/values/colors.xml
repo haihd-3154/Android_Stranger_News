@@ -16,4 +16,10 @@
     <color name="color_icons">#FFFFFF</color>
     <color name="color_divider">#BDBDBD</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="color_blue">#1363DF</color>
+    <color name="color_orange">#FF8D29</color>
+    <color name="color_purple">#937DC2</color>
+    <color name="color_yellow">#F7EC09</color>
+    <color name="color_navy">#53BF9D</color>
+    <color name="color_pink">#F37878</color>
 </resources>
