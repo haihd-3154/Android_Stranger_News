@@ -1,6 +1,9 @@
 package com.example.strangernews.ui.view
 
+import android.view.Gravity
+import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import com.example.strangernews.R
 import com.example.strangernews.base.BaseActivity
@@ -17,11 +20,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 setSupportActionBar(this)
                 setNavigationIcon(R.drawable.ic_menu)
             }
-            supportActionBar?.setDisplayShowTitleEnabled(false);
+            supportActionBar?.setDisplayShowTitleEnabled(false)
             navigationView.setNavigationItemSelectedListener(this@MainActivity)
         }
     }
     override fun initData() {
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_home_toolbar, menu);
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
