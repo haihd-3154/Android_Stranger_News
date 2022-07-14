@@ -1,10 +1,12 @@
 package com.example.strangernews.data.model
 
 import android.os.Parcelable
+import androidx.recyclerview.widget.DiffUtil
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "tb_article")
@@ -31,8 +33,23 @@ data class Article(
     @SerializedName("country")
     var country: String = "",
     @SerializedName("published_at")
-    var published_at: String = "",
+    var publishedAt: String = "",
 ) : Parcelable {
+    @IgnoredOnParcel
     @Ignore
     var isFavorite: Boolean = false
+
+    fun compare(article: Article): Boolean = this.title == article.title
+
+    companion object {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Article>() {
+            override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
+                return oldItem.title == newItem.title
+            }
+
+            override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 }
