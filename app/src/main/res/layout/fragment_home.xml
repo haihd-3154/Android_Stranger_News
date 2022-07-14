@@ -7,99 +7,212 @@
     android:layout_height="match_parent"
     tools:context=".ui.view.home.HomeFragment">
 
-    <androidx.core.widget.NestedScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/layoutHome"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_20dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:text="@string/breaking_news"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dimen_18sp" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewpagerBreakingNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_250dp"
+                    android:layout_marginHorizontal="@dimen/dimen_10dp"
+                    android:layout_marginTop="@dimen/dimen_10dp" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_30dp"
+                    android:layout_marginVertical="@dimen/dimen_10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_20dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:layout_marginBottom="@dimen/dimen_10dp"
+                    android:text="@string/categories"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dimen_18sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewCategories"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_100dp"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_20dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:layout_marginBottom="@dimen/dimen_10dp"
+                    android:text="@string/sources"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dimen_18sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewSources"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_100dp"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_30dp"
+                    android:layout_marginVertical="@dimen/dimen_10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_20dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:text="@string/recent"
+                    android:textColor="@color/color_black_3"
+                    android:textSize="@dimen/dimen_18sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewRecent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/homeShimmer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtBreakingNews"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_20dp"
-                android:layout_marginTop="@dimen/dimen_20dp"
-                android:text="@string/breaking_news"
-                android:textColor="@color/color_black"
-                android:textSize="@dimen/dimen_18sp" />
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewpagerBreakingNews"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_250dp"
-                android:layout_marginHorizontal="@dimen/dimen_10dp"
-                android:layout_marginTop="@dimen/dimen_10dp" />
-
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/dimen_30dp"
-                android:layout_marginVertical="@dimen/dimen_10dp" />
-
-            <TextView
-                android:id="@+id/txtCategories"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_20dp"
-                android:layout_marginTop="@dimen/dimen_20dp"
-                android:layout_marginBottom="@dimen/dimen_10dp"
-                android:text="@string/categories"
-                android:textColor="@color/color_black"
-                android:textSize="@dimen/dimen_18sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerviewCategories"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_100dp"
-                android:layout_marginTop="@dimen/dimen_10dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-            <TextView
-                android:id="@+id/txtSources"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_20dp"
-                android:layout_marginTop="@dimen/dimen_20dp"
-                android:layout_marginBottom="@dimen/dimen_10dp"
-                android:text="@string/sources"
-                android:textColor="@color/color_black"
-                android:textSize="@dimen/dimen_18sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerviewSources"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_100dp"
-                android:layout_marginTop="@dimen/dimen_10dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/dimen_30dp"
-                android:layout_marginVertical="@dimen/dimen_10dp" />
-
-            <TextView
-                android:id="@+id/txtRecent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_20dp"
-                android:layout_marginTop="@dimen/dimen_20dp"
-                android:text="@string/recent"
-                android:textColor="@color/color_black_3"
-                android:textSize="@dimen/dimen_18sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerviewRecent"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/dimen_10dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                android:orientation="vertical">
 
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_20dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:text="@string/breaking_news"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dimen_18sp" />
 
+                <include
+                    layout="@layout/placeholder_article_pageview"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_250dp"
+                    android:layout_marginHorizontal="@dimen/dimen_10dp"
+                    android:layout_marginTop="@dimen/dimen_10dp" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_30dp"
+                    android:layout_marginVertical="@dimen/dimen_10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_20dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:layout_marginBottom="@dimen/dimen_10dp"
+                    android:text="@string/categories"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dimen_18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10dp">
+
+                    <include layout="@layout/placeholder_datatype_home" />
+
+                    <include layout="@layout/placeholder_datatype_home" />
+
+                    <include layout="@layout/placeholder_datatype_home" />
+
+                    <include layout="@layout/placeholder_datatype_home" />
+
+                    <include layout="@layout/placeholder_datatype_home" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_20dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:layout_marginBottom="@dimen/dimen_10dp"
+                    android:text="@string/sources"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dimen_18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10dp">
+
+                    <include layout="@layout/placeholder_datatype_home" />
+
+                    <include layout="@layout/placeholder_datatype_home" />
+
+                    <include layout="@layout/placeholder_datatype_home" />
+
+                    <include layout="@layout/placeholder_datatype_home" />
+
+                    <include layout="@layout/placeholder_datatype_home" />
+                </LinearLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_30dp"
+                    android:layout_marginVertical="@dimen/dimen_10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_20dp"
+                    android:layout_marginTop="@dimen/dimen_20dp"
+                    android:text="@string/recent"
+                    android:textColor="@color/color_black_3"
+                    android:textSize="@dimen/dimen_18sp" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_30dp"
+                    android:layout_marginVertical="@dimen/dimen_10dp" />
+
+                <include layout="@layout/placeholder_main_article" />
+
+                <include layout="@layout/placeholder_main_article" />
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+    </RelativeLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

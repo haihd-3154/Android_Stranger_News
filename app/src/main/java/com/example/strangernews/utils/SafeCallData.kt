@@ -27,8 +27,6 @@ interface SafeCallData {
                         DataResult.Error(Exception(Constants.ERROR_UNKNOWN))
                     }
                 }
-            } finally {
-                DataResult.Error(Exception(Constants.ERROR_OCCUR))
             }
         }
     }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_140dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageArticleItem"
+        android:layout_width="@dimen/dimen_100dp"
+        android:layout_height="@dimen/dimen_130dp"
+        android:layout_margin="@dimen/dimen_10dp"
+        android:scaleType="centerCrop"
+        android:background="@color/color_grey_placeholder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/style_img_corner_5" />
+
+    <View
+        android:id="@+id/txtArticleName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dimen_10dp"
+        android:textColor="@color/color_black_3"
+        android:background="@color/color_grey_placeholder"
+        android:textSize="@dimen/dimen_18sp"
+        android:textStyle="bold"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageArticleItem"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

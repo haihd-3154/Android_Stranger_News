@@ -1,13 +1,13 @@
 package com.example.strangernews.ui.view
 
-import android.view.Gravity
+import android.content.Intent
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import com.example.strangernews.R
 import com.example.strangernews.base.BaseActivity
 import com.example.strangernews.databinding.ActivityMainBinding
+import com.example.strangernews.ui.view.search.SearchActivity
 import com.google.android.material.navigation.NavigationView
 
 
@@ -39,12 +39,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     drawerLayout.openDrawer(GravityCompat.START)
                     return true
                 }
+                R.id.nav_search -> {
+                    Intent(this@MainActivity, SearchActivity::class.java).apply {
+                        startActivity(this)
+                    }
+                }
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_search -> {
+                Intent(this@MainActivity, SearchActivity::class.java).apply {
+                    startActivity(this)
+                }
+            }
+        }
         binding?.apply {
             drawerLayout.closeDrawers()
         }

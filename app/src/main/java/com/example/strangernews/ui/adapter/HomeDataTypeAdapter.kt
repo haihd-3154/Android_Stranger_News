@@ -2,10 +2,8 @@ package com.example.strangernews.ui.adapter
 
 import android.graphics.PorterDuff
 import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.ShapeDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -14,8 +12,12 @@ import com.example.strangernews.R
 import com.example.strangernews.data.model.DataType
 import com.example.strangernews.data.model.DataType.Companion.DIFF_CALLBACK
 import com.example.strangernews.databinding.LayoutDatatypeItemBinding
+import com.example.strangernews.ui.callback.ItemClickListener
+import com.example.strangernews.utils.constant.Constants
 import com.example.strangernews.utils.constant.TypeOfSource
 import com.example.strangernews.utils.extension.getResourceColor
+import com.example.strangernews.utils.extension.loadByDrawableRes
+import com.example.strangernews.utils.extension.loadCircleImageByUrl
 
 class HomeDataTypeAdapter(private val listener: ItemClickListener<DataType>) :
     ListAdapter<DataType, HomeDataTypeAdapter.ViewHolder>(DIFF_CALLBACK) {
@@ -34,9 +36,7 @@ class HomeDataTypeAdapter(private val listener: ItemClickListener<DataType>) :
                     when (type) {
                         TypeOfSource.CATEGORY.name -> {
                             imgDataType.apply {
-                                load(iconFromResource) {
-                                    crossfade(true)
-                                }
+                                loadByDrawableRes(iconFromResource)
                                 setColorFilter(
                                     context.getResourceColor(android.R.color.white),
                                     PorterDuff.Mode.SRC_ATOP
@@ -48,10 +48,7 @@ class HomeDataTypeAdapter(private val listener: ItemClickListener<DataType>) :
                             }
                         }
                         TypeOfSource.SOURCE.name -> {
-                            imgDataType.load(image) {
-                                crossfade(true)
-                                transformations(CircleCropTransformation())
-                            }
+                            imgDataType.loadCircleImageByUrl(image)
                         }
                         else -> {}
                     }

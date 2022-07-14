@@ -1,4 +1,4 @@
-package com.example.strangernews.ui.adapter
+package com.example.strangernews.ui.callback
 
 interface ItemClickListener<T> {
     fun onItemClick(item: T?)
