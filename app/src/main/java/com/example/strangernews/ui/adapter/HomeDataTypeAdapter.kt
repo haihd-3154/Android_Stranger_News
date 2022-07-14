@@ -2,18 +2,16 @@ package com.example.strangernews.ui.adapter
 
 import android.graphics.PorterDuff
 import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.ShapeDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.example.strangernews.R
 import com.example.strangernews.data.model.DataType
 import com.example.strangernews.data.model.DataType.Companion.DIFF_CALLBACK
 import com.example.strangernews.databinding.LayoutDatatypeItemBinding
+import com.example.strangernews.ui.callback.ItemClickListener
 import com.example.strangernews.utils.constant.TypeOfSource
 import com.example.strangernews.utils.extension.getResourceColor
 

@@ -9,6 +9,7 @@ import com.example.strangernews.R
 import com.example.strangernews.data.model.Article
 import com.example.strangernews.data.model.Article.Companion.DIFF_CALLBACK
 import com.example.strangernews.databinding.LayoutAritcleMainItemBinding
+import com.example.strangernews.ui.callback.ItemClickListener
 import com.example.strangernews.utils.constant.Constants
 import com.example.strangernews.utils.extension.coverToDateTime
 

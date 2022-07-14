@@ -24,4 +24,6 @@
     <color name="color_pink">#F37878</color>
     <color name="color_black_3">#333333</color>
     <color name="color_grey">#DFDFDE</color>
+    <color name="color_black_6">#666666</color>
+    <color name="color_grey_placeholder">#B3B3B3</color>
 </resources>
