@@ -1,17 +1,30 @@
 package com.example.strangernews.data.model
 
 import android.os.Parcelable
+import androidx.recyclerview.widget.DiffUtil
 import com.example.strangernews.utils.constant.ResourceColor
 import com.example.strangernews.utils.constant.ResourceIcon
 import com.example.strangernews.utils.constant.TypeOfSource
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-class DataType(
+data class DataType(
     var id : String = "",
     var type: String = TypeOfSource.CATEGORY.name,
     var name: String = "",
     var colorFromResource: Int = ResourceColor.RED,
     var iconFromResource: Int = ResourceIcon.GENERAL,
     var image: String = ""
-) : Parcelable
+) : Parcelable{
+    companion object {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DataType>() {
+            override fun areItemsTheSame(oldItem: DataType, newItem: DataType): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: DataType, newItem: DataType): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
+}
