@@ -16,13 +16,13 @@ class HomeViewModel(
     private val articleRepository: ArticleRepository
 ) : BaseViewModel() {
 
-    init{
+    init {
         getListArticles()
     }
 
     private val limitQuery = 50
     private val _listArticles: MutableLiveData<List<Article>> = MutableLiveData()
-    val listArticles: LiveData<List<Article>> = _listArticles
+    val listArticles: LiveData<List<Article>> get() = _listArticles
 
     fun getListArticles() {
         launchTaskSync(
@@ -33,9 +33,9 @@ class HomeViewModel(
     }
 
     fun updateSaved(savedList: List<Article>) {
-        viewModelScope.launch(Dispatchers.IO){
-            val tempt = listArticles.value?.map { tempArticle->
-                savedList.forEach{ savedArticle ->
+        viewModelScope.launch(Dispatchers.IO) {
+            val tempt = listArticles.value?.map { tempArticle ->
+                savedList.forEach { savedArticle ->
                     if (tempArticle.compare(savedArticle)) tempArticle.isFavorite = true
                 }
                 tempArticle

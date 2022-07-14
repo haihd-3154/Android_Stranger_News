@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -67,7 +68,7 @@ fun Context.showArticleBottomSheet(ar: Article, open: Boolean = true) {
                     listener.open(ar)
                 }
             } else {
-                layoutSheetItem.visibility = View.GONE
+                includeItemOpen.root.isVisible= false
             }
         }
         includeItemBrowser.apply {

@@ -1,5 +1,6 @@
 package com.example.strangernews.ui.view.home
 
+import android.content.Intent
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,9 +12,11 @@ import com.example.strangernews.ui.adapter.ArticleMainAdapter
 import com.example.strangernews.ui.adapter.HomeDataTypeAdapter
 import com.example.strangernews.ui.adapter.HomeViewPagerAdapter
 import com.example.strangernews.ui.callback.ItemClickListener
+import com.example.strangernews.ui.view.detail.DetailActivity
 import com.example.strangernews.ui.viewmodel.HomeViewModel
 import com.example.strangernews.ui.viewmodel.SavedViewModel
 import com.example.strangernews.utils.constant.Constants
+import com.example.strangernews.utils.constant.Constants.ARTICLE_EXTRA
 import com.example.strangernews.utils.constant.SupportData
 import com.example.strangernews.utils.extension.showArticleBottomSheet
 import com.example.strangernews.utils.extension.showToast
@@ -40,6 +43,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private val articleClickListener = object : ItemClickListener<Article> {
         override fun onItemClick(item: Article?) {
+            item?.let {
+                Intent(context, DetailActivity::class.java).apply {
+                    putExtra(ARTICLE_EXTRA, item)
+                    startActivity(this)
+                }
+            }
         }
 
         override fun onItemLongClick(item: Article?): Boolean {
