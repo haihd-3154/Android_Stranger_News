@@ -20,4 +20,5 @@ object Constants {
     const val TXT_OPEN_BROWSER = "Browser"
     const val TXT_OPEN = "Open"
     const val TXT_SHARE = "Share"
+    const val ARTICLE_EXTRA = "article"
 }

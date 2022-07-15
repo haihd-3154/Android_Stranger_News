@@ -1,7 +1,9 @@
 package com.example.strangernews.data.source.local.datastore
 
 import android.content.Context
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import com.example.strangernews.utils.extension.dataStore
 import kotlinx.coroutines.CoroutineScope
@@ -17,6 +19,17 @@ class DataStoreManager(context: Context) {
     val searchHistory = datastore.data.map { preferences ->
         preferences[SEARCH_HISTORY]
     }
+    val appMode = datastore.data.map { preferences ->
+        preferences[APP_MODE]
+    }
+    val dailyNew = datastore.data.map { preferences ->
+        preferences[DAILY_NEW]
+
+    }
+    val dailyTime = datastore.data.map { preferences ->
+        preferences[DAILY_TIME]
+
+    }
 
     suspend fun addSearchHistory(searchHistory: String) {
         launchDataStore {
@@ -31,13 +44,34 @@ class DataStoreManager(context: Context) {
         }
     }
 
+    suspend fun updateAppMode(value: Boolean) {
+        launchDataStore {
+            datastore.edit { preferences ->
+                preferences[APP_MODE] = value
+            }
+        }
+    }
+
+    suspend fun updateDailyNew(isOn: Boolean, time: String, setTime: Boolean = true) {
+        launchDataStore {
+            datastore.edit { preferences ->
+                preferences[DAILY_NEW] = isOn
+                if (setTime) preferences[DAILY_TIME] = time
+            }
+        }
+    }
+
     private suspend fun launchDataStore(call: suspend () -> Unit) {
         CoroutineScope(Dispatchers.IO).launch {
             call()
         }
     }
 
+
     companion object {
         val SEARCH_HISTORY = stringSetPreferencesKey("app_key_search_history")
+        val APP_MODE = booleanPreferencesKey("app_dark_mode")
+        val DAILY_NEW = booleanPreferencesKey("app_daily_news")
+        val DAILY_TIME = stringPreferencesKey("app_daily_time")
     }
 }

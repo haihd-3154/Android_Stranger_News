@@ -13,6 +13,13 @@
     <string name="drawer_close">Close</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="breaking_news">Breaking News</string>
-    <string name="recent">Recents</string>
+    <string name="recent">Recent</string>
     <string name="search_hint">Key words</string>
+    <string name="more">More</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="daily_news">Daily news</string>
+    <string name="_08_00">08:00</string>
 </resources>

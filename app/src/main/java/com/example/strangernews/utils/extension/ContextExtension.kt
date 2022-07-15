@@ -67,7 +67,7 @@ fun Context.showArticleBottomSheet(ar: Article, open: Boolean = true) {
                     listener.open(ar)
                 }
             } else {
-                layoutSheetItem.visibility = View.GONE
+                includeItemOpen.root.visibility= View.GONE
             }
         }
         includeItemBrowser.apply {
