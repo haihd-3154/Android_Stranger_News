@@ -6,13 +6,14 @@ import com.example.strangernews.data.model.data_response.DataResponse
 
 interface ArticleDataSource {
 
-    interface Local{
+    interface Local {
         suspend fun getLocalArticles(): List<Article>
         suspend fun insertArticle(article: Article)
         suspend fun deleteArticle(article: Article)
+        suspend fun checkIsFavorite(query: String): Boolean
     }
 
-    interface Remote{
-        suspend fun getRemoteArticles(query: QueryData) : DataResponse
+    interface Remote {
+        suspend fun getRemoteArticles(query: QueryData): DataResponse
     }
 }

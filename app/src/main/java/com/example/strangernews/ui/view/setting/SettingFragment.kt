@@ -10,7 +10,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.strangernews.base.BaseFragment
 import com.example.strangernews.databinding.FragmentSettingBinding
 import com.example.strangernews.ui.viewmodel.SettingViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -39,7 +38,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBind
                         if (firstTime) {
                             val cal = Calendar.getInstance()
                             val timeSetListener =
-                                TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+                                TimePickerDialog.OnTimeSetListener { _, hour, minute ->
                                     alertTime = "$hour:$minute"
                                     txtTime.text = alertTime
                                     viewModel.updateDailNew(boolean, alertTime)

@@ -7,7 +7,8 @@ import com.example.strangernews.utils.DataResult
 
 interface ArticleRepository {
     suspend fun getRemoteArticles(query: QueryData): DataResult<DataResponse>
-    suspend fun insertLocalArticle(article: Article)
-    suspend fun deleteLocalArticle(article: Article)
-    suspend fun getLocalArticles() :DataResult<List<Article>>
+    suspend fun insertLocalArticle(article: Article): DataResult<Unit>
+    suspend fun deleteLocalArticle(article: Article): DataResult<Unit>
+    suspend fun getLocalArticles(): DataResult<List<Article>>
+    suspend fun checkIsFavorite(query: String): DataResult<Boolean>
 }

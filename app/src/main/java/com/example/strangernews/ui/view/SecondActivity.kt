@@ -5,8 +5,8 @@ import android.view.MenuItem
 import com.example.strangernews.R
 import com.example.strangernews.base.BaseActivity
 import com.example.strangernews.databinding.ActivitySecondBinding
+import com.example.strangernews.ui.view.saved.SavedFragment
 import com.example.strangernews.ui.view.setting.SettingFragment
-import com.example.strangernews.utils.extension.showArticleBottomSheet
 
 class SecondActivity : BaseActivity<ActivitySecondBinding>(ActivitySecondBinding::inflate) {
     override fun initView() {
@@ -14,6 +14,7 @@ class SecondActivity : BaseActivity<ActivitySecondBinding>(ActivitySecondBinding
         supportFragmentManager.beginTransaction().apply{
             when(type){
                 SETTING -> replace(R.id.navContainer,SettingFragment.newInstance())
+                SAVED -> replace(R.id.navContainer, SavedFragment.newInstance())
                 else -> replace(R.id.navContainer,SettingFragment.newInstance())
             }
         }.commit()

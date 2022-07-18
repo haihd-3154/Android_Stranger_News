@@ -62,6 +62,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     startActivity(this)
                 }
             }
+            R.id.nav_saved ->{
+                Intent(this, SecondActivity::class.java).apply {
+                    putExtra(SecondActivity.TYPE_EXTRA,SecondActivity.SAVED)
+                    startActivity(this)
+                }
+            }
         }
         binding?.apply {
             drawerLayout.closeDrawers()
