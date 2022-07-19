@@ -4,17 +4,32 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.strangernews.R
 import com.example.strangernews.base.BaseActivity
+import com.example.strangernews.data.model.DataType
 import com.example.strangernews.databinding.ActivitySecondBinding
+import com.example.strangernews.ui.view.category.CategoryFragment
+import com.example.strangernews.ui.view.catelories.AllCategoryFragment
 import com.example.strangernews.ui.view.saved.SavedFragment
 import com.example.strangernews.ui.view.setting.SettingFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SecondActivity : BaseActivity<ActivitySecondBinding>(ActivitySecondBinding::inflate) {
+
     override fun initView() {
         val type = intent.getStringExtra(TYPE_EXTRA)
         supportFragmentManager.beginTransaction().apply{
             when(type){
                 SETTING -> replace(R.id.navContainer,SettingFragment.newInstance())
                 SAVED -> replace(R.id.navContainer, SavedFragment.newInstance())
+                CATEGORY -> {
+                    intent.getParcelableExtra<DataType>(DATA_TYPE_EXTRA)?.let {
+                        replace(R.id.navContainer, CategoryFragment.newInstance(it))
+                    }
+                }
+                ALL_CATEGORY -> {
+                    intent.getStringExtra(LIST_DATA_TYPE_EXTRA)?.let {
+                        replace(R.id.navContainer, AllCategoryFragment.newInstance(it))
+                    }
+                }
                 else -> replace(R.id.navContainer,SettingFragment.newInstance())
             }
         }.commit()
@@ -50,6 +65,8 @@ class SecondActivity : BaseActivity<ActivitySecondBinding>(ActivitySecondBinding
 
     companion object {
         const val TYPE_EXTRA = "type"
+        const val DATA_TYPE_EXTRA = "datatype"
+        const val LIST_DATA_TYPE_EXTRA = "list_datatype"
         const val SETTING = "Setting"
         const val FILTER = "News"
         const val ALL_CATEGORY = "all category"

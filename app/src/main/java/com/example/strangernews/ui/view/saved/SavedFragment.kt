@@ -67,7 +67,7 @@ class SavedFragment : BaseFragment<FragmentSavedBinding>(FragmentSavedBinding::i
 
     override fun onItemSelected(p0: AdapterView<*>?, parent: View?, position: Int, id: Long) {
         currentSort = position
-        savedAdapterView.apply{
+        savedAdapterView.apply {
             submitList(viewModel.savedArticles.value?.sortItems())
         }
     }

@@ -9,17 +9,20 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class DataType(
-    var id : String = "",
+    var id: String = "",
     var type: String = TypeOfSource.CATEGORY.name,
     var name: String = "",
     var colorFromResource: Int = ResourceColor.RED,
     var iconFromResource: Int = ResourceIcon.GENERAL,
     var image: String = ""
-) : Parcelable{
+) : Parcelable {
+
+    fun compare(dataType: DataType): Boolean = this.name == dataType.name && this.id == dataType.id
+
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DataType>() {
             override fun areItemsTheSame(oldItem: DataType, newItem: DataType): Boolean {
-                return oldItem.id == newItem.id
+                return oldItem.id == newItem.id && oldItem.name == newItem.name
             }
 
             override fun areContentsTheSame(oldItem: DataType, newItem: DataType): Boolean {

@@ -11,6 +11,7 @@ import com.example.strangernews.ui.adapter.ArticleMainAdapter
 import com.example.strangernews.ui.adapter.HomeDataTypeAdapter
 import com.example.strangernews.ui.adapter.HomeViewPagerAdapter
 import com.example.strangernews.ui.callback.ItemClickListener
+import com.example.strangernews.ui.view.SecondActivity
 import com.example.strangernews.ui.view.detail.DetailActivity
 import com.example.strangernews.ui.viewmodel.HomeViewModel
 import com.example.strangernews.ui.viewmodel.SavedViewModel
@@ -52,7 +53,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         override fun onItemLongClick(item: Article?): Boolean {
             item?.let {
-                context?.showArticleBottomSheet(it,savedVM.listener)
+                context?.showArticleBottomSheet(it, savedVM.listener)
             }
             return false
         }
@@ -60,6 +61,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private val dataTypeClickListener = object : ItemClickListener<DataType> {
         override fun onItemClick(item: DataType?) {
+            Intent(context, SecondActivity::class.java).apply {
+                item?.let {
+                    putExtra(SecondActivity.TYPE_EXTRA, SecondActivity.CATEGORY)
+                    putExtra(SecondActivity.DATA_TYPE_EXTRA, it)
+                    startActivity(this)
+                }
+            }
         }
 
         override fun onItemLongClick(item: DataType?): Boolean {

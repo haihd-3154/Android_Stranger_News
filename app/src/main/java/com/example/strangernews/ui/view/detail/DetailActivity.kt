@@ -98,9 +98,9 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(ActivityDetailBinding
         }
     }
 
-    private fun checkIsFavorite(){
+    private fun checkIsFavorite() {
         lifecycleScope.launch {
-            mArticle?.let{
+            mArticle?.let {
                 savedVM.check(it)
             }
         }

@@ -31,4 +31,5 @@
     <dimen name="dimen_25dp">25dp</dimen>
     <dimen name="dimen_35dp">35dp</dimen>
     <dimen name="dimen_90dp">90dp</dimen>
+    <dimen name="dimen_1dp">1dp</dimen>
 </resources>

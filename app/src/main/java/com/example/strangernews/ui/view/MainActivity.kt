@@ -8,6 +8,7 @@ import com.example.strangernews.R
 import com.example.strangernews.base.BaseActivity
 import com.example.strangernews.databinding.ActivityMainBinding
 import com.example.strangernews.ui.view.search.SearchActivity
+import com.example.strangernews.utils.constant.TypeOfSource
 import com.google.android.material.navigation.NavigationView
 
 
@@ -65,6 +66,34 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             R.id.nav_saved ->{
                 Intent(this, SecondActivity::class.java).apply {
                     putExtra(SecondActivity.TYPE_EXTRA,SecondActivity.SAVED)
+                    startActivity(this)
+                }
+            }
+            R.id.nav_categories ->{
+                Intent(this, SecondActivity::class.java).apply {
+                    putExtra(SecondActivity.TYPE_EXTRA, SecondActivity.ALL_CATEGORY)
+                    putExtra(SecondActivity.LIST_DATA_TYPE_EXTRA, TypeOfSource.CATEGORY.name)
+                    startActivity(this)
+                }
+            }
+            R.id.nav_sources ->{
+                Intent(this, SecondActivity::class.java).apply {
+                    putExtra(SecondActivity.TYPE_EXTRA, SecondActivity.ALL_CATEGORY)
+                    putExtra(SecondActivity.LIST_DATA_TYPE_EXTRA, TypeOfSource.SOURCE.name)
+                    startActivity(this)
+                }
+            }
+            R.id.nav_language ->{
+                Intent(this, SecondActivity::class.java).apply {
+                    putExtra(SecondActivity.TYPE_EXTRA, SecondActivity.ALL_CATEGORY)
+                    putExtra(SecondActivity.LIST_DATA_TYPE_EXTRA, TypeOfSource.LANGUAGE.name)
+                    startActivity(this)
+                }
+            }
+            R.id.nav_countries ->{
+                Intent(this, SecondActivity::class.java).apply {
+                    putExtra(SecondActivity.TYPE_EXTRA, SecondActivity.ALL_CATEGORY)
+                    putExtra(SecondActivity.LIST_DATA_TYPE_EXTRA, TypeOfSource.COUNTRY.name)
                     startActivity(this)
                 }
             }
