@@ -9,8 +9,12 @@ import org.koin.android.annotation.KoinViewModel
 
 @KoinViewModel
 class SavedViewModel(
-    private val articleRepository: ArticleRepository
+    private val articleRepository: ArticleRepository,
 ) : BaseViewModel() {
+
+    init {
+        getSavedArticles()
+    }
 
     private val _savedArticles: MutableLiveData<List<Article>> = MutableLiveData()
     val savedArticles: LiveData<List<Article>> = _savedArticles
@@ -19,7 +23,7 @@ class SavedViewModel(
         launchTaskSync(
             onRequest = { articleRepository.getLocalArticles() },
             onSuccess = { _savedArticles.postValue(it) },
-            onError = {errorResponse.postValue(it)}
+            onError = { errorResponse.postValue(it) }
         )
     }
 }

@@ -10,14 +10,19 @@
         android:name=".MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
-        android:usesCleartextTraffic="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StrangerNews"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.view.search.SearchActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/SearchTheme" />
         <activity
             android:name=".ui.view.splash.SplashActivity"
             android:exported="true"
@@ -32,7 +37,7 @@
         <activity
             android:name=".ui.view.MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

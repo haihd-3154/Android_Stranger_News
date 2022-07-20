@@ -115,248 +115,248 @@ object SupportData {
         DataType(
             id = "ar",
             name = "Argentina",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/ar-flag.gif"
         ),
         DataType(
             id = "au",
             name = "Australia",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/as-flag.gif"
         ),
         DataType(
             id = "be",
             name = "Belgium",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/be-flag.gif"
         ),
         DataType(
             id = "br",
             name = "Brazil",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/br-flag.gif"
         ),
         DataType(
             id = "ca",
             name = "Canada",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/ca-flag.gif"
         ),
         DataType(
             id = "cn",
             name = "China",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/ch-flag.gif"
         ),
         DataType(
             id = "eg",
             name = "Egypt",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/eg-flag.gif"
         ),
         DataType(
             id = "fr",
             name = "France",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/fr-flag.gif"
         ),
         DataType(
             id = "de",
             name = "Germany",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/gm-flag.gif"
         ),
         DataType(
             id = "id",
             name = "Indonesia",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/id-flag.gif"
         ),
         DataType(
             id = "ie",
             name = "Ireland",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/ei-flag.gif"
         ),
         DataType(
             id = "il",
             name = "Israel",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/is-flag.gif"
         ),
         DataType(
             id = "it",
             name = "Italy",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/it-flag.gif"
         ),
         DataType(
             id = "jp",
             name = "Japan",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/ja-flag.gif"
         ),
         DataType(
             id = "lv",
             name = "Latvia",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/lg-flag.gif"
         ),
         DataType(
             id = "mx",
             name = "Mexico",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/mx-flag.gif"
         ),
         DataType(
             id = "nl",
             name = "New Zealand",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/nz-flag.gif"
         ),
         DataType(
             id = "ph",
             name = "Philippines",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/rp-flag.gif"
         ),
         DataType(
             id = "pl",
             name = "Poland",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/rp-flag.gif"
         ),
         DataType(
             id = "pt",
             name = "Portugal",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/po-flag.gif"
         ),
         DataType(
             id = "ro",
             name = "Romania",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/ro-flag.gif"
         ),
         DataType(
             id = "sa",
             name = "Saudi Arabia",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/sa-flag.gif"
         ),
         DataType(
             id = "sg",
             name = "Singapore",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/sn-flag.gif"
         ),
         DataType(
             id = "za",
             name = "South Africa",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/sf-flag.gif"
         ),
         DataType(
             id = "kr",
             name = "South Korea",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/ks-flag.gif"
         ),
         DataType(
             id = "ch",
             name = "Switzerland",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/sz-flag.gif"
         ),
         DataType(
             id = "tr",
             name = "Turkey",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/tu-flag.gif"
         ),
         DataType(
             id = "ae",
             name = "UAE",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/ae-flag.gif"
         ),
         DataType(
             id = "gb",
             name = "United Kingdom",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/uk-flag.gif"
         ),
         DataType(
             id = "us",
             name = "United States",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/us-flag.gif"
         ),
         DataType(
             id = "ve",
             name = "Venezuela",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/ve-flag.gif"
         ),
         DataType(
             id = "th",
             name = "Thailand",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/th-flag.gif"
         ),
         DataType(
             id = "ua",
             name = "Ukraine",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/up-flag.gif"
         ),
 
         DataType(
             id = "at",
             name = "Austria",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/au-flag.gif"
         ),
         DataType(
             id = "co",
             name = "Colombia",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/co-flag.gif"
         ),
         DataType(
             id = "bg",
             name = "Bulgaria",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/bu-flag.gif"
         ),
         DataType(
             id = "cz",
             name = "Czech Republic",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/ez-flag.gif"
         ),
         DataType(
             id = "rs",
             name = "Serbia",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/ri-flag.gif"
         ),
         DataType(
             id = "in",
             name = "India",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/in-flag.gif"
         ),
         DataType(
             id = "no",
             name = "Norway",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/no-flag.gif"
         ),
         DataType(
             id = "gr",
             name = "Greece",
-            type = TypeOfSource.SOURCE.name,
+            type = TypeOfSource.COUNTRY.name,
             image = "https://www.worldometers.info/img/flags/gr-flag.gif"
         ),
     )
