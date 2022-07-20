@@ -8,9 +8,9 @@ import com.example.strangernews.data.model.DataType
 import com.example.strangernews.databinding.ActivitySecondBinding
 import com.example.strangernews.ui.view.category.CategoryFragment
 import com.example.strangernews.ui.view.catelories.AllCategoryFragment
+import com.example.strangernews.ui.view.news.NewsFragment
 import com.example.strangernews.ui.view.saved.SavedFragment
 import com.example.strangernews.ui.view.setting.SettingFragment
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SecondActivity : BaseActivity<ActivitySecondBinding>(ActivitySecondBinding::inflate) {
 
@@ -20,6 +20,7 @@ class SecondActivity : BaseActivity<ActivitySecondBinding>(ActivitySecondBinding
             when(type){
                 SETTING -> replace(R.id.navContainer,SettingFragment.newInstance())
                 SAVED -> replace(R.id.navContainer, SavedFragment.newInstance())
+                NEWS -> replace(R.id.navContainer, NewsFragment.newInstance())
                 CATEGORY -> {
                     intent.getParcelableExtra<DataType>(DATA_TYPE_EXTRA)?.let {
                         replace(R.id.navContainer, CategoryFragment.newInstance(it))
@@ -68,7 +69,7 @@ class SecondActivity : BaseActivity<ActivitySecondBinding>(ActivitySecondBinding
         const val DATA_TYPE_EXTRA = "datatype"
         const val LIST_DATA_TYPE_EXTRA = "list_datatype"
         const val SETTING = "Setting"
-        const val FILTER = "News"
+        const val NEWS = "News"
         const val ALL_CATEGORY = "all category"
         const val CATEGORY = "Category"
         const val SAVED = "Saved"

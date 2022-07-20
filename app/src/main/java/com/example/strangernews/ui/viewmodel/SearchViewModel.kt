@@ -33,7 +33,8 @@ class SearchViewModel(
                 articleRepository.getRemoteArticles(
                     QueryData(
                         limit = searchLimit,
-                        keywords = queryString
+                        keywords = queryString,
+                        languages = ""
                     )
                 )
             },

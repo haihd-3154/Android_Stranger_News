@@ -21,4 +21,6 @@ object Constants {
     const val TXT_OPEN = "Open"
     const val TXT_SHARE = "Share"
     const val ARTICLE_EXTRA = "article"
+    const val POSITIVE_TEXT = "Ok"
+    const val NEGATIVE_TEXT = "Cancel"
 }

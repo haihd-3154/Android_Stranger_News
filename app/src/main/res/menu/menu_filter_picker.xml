@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/dialog_category"
+        android:checked="true"
+        android:title="@string/categories" />
+    <item
+        android:id="@+id/dialog_source"
+        android:checked="true"
+        android:title="@string/sources" />
+    <item
+        android:id="@+id/dialog_language"
+        android:checked="true"
+        android:title="@string/languages" />
+    <item
+        android:id="@+id/dialog_country"
+        android:checked="true"
+        android:title="@string/countries" />
+    <item
+        android:id="@+id/dialog_date"
+        android:checked="true"
+        android:title="@string/date" />
+    <item
+        android:id="@+id/dialog_limit"
+        android:checked="true"
+        android:title="@string/limit" />
+    <item
+        android:id="@+id/clear"
+        android:checked="true"
+        android:title="@string/clear" />
+</menu>

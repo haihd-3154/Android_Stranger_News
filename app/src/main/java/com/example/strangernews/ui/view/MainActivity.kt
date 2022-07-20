@@ -69,6 +69,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     startActivity(this)
                 }
             }
+            R.id.nav_news ->{
+                Intent(this, SecondActivity::class.java).apply {
+                    putExtra(SecondActivity.TYPE_EXTRA,SecondActivity.NEWS)
+                    startActivity(this)
+                }
+            }
             R.id.nav_categories ->{
                 Intent(this, SecondActivity::class.java).apply {
                     putExtra(SecondActivity.TYPE_EXTRA, SecondActivity.ALL_CATEGORY)

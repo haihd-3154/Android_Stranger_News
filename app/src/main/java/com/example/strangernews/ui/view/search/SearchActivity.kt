@@ -1,5 +1,6 @@
 package com.example.strangernews.ui.view.search
 
+import android.content.Intent
 import android.database.Cursor
 import android.database.MatrixCursor
 import android.provider.BaseColumns
@@ -12,8 +13,10 @@ import com.example.strangernews.data.model.Article
 import com.example.strangernews.databinding.ActivitySearchBinding
 import com.example.strangernews.ui.adapter.ArticleMainAdapter
 import com.example.strangernews.ui.callback.ItemClickListener
+import com.example.strangernews.ui.view.detail.DetailActivity
 import com.example.strangernews.ui.viewmodel.SavedViewModel
 import com.example.strangernews.ui.viewmodel.SearchViewModel
+import com.example.strangernews.utils.constant.Constants
 import com.example.strangernews.utils.extension.showArticleBottomSheet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -25,6 +28,12 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>(ActivitySearchBinding
     private val articleAdapter: ArticleMainAdapter by lazy {
         ArticleMainAdapter(object : ItemClickListener<Article> {
             override fun onItemClick(item: Article?) {
+                item?.let {
+                    Intent(this@SearchActivity, DetailActivity::class.java).apply {
+                        putExtra(Constants.ARTICLE_EXTRA, item)
+                        startActivity(this)
+                    }
+                }
             }
 
             override fun onItemLongClick(item: Article?): Boolean {

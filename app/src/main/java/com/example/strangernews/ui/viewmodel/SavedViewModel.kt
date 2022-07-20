@@ -12,6 +12,7 @@ import com.example.strangernews.data.repository.ArticleRepository
 import com.example.strangernews.ui.callback.ArticleBottomSheetCallback
 import com.example.strangernews.ui.view.detail.DetailActivity
 import com.example.strangernews.utils.constant.Constants
+import com.example.strangernews.utils.extension.showToast
 import org.koin.android.annotation.KoinViewModel
 
 @KoinViewModel
@@ -27,23 +28,27 @@ class SavedViewModel(
     val savedArticles: LiveData<List<Article>> = _savedArticles
     val listener = object : ArticleBottomSheetCallback {
 
-        override fun checkIsFavorite(article: Article) {
+        override fun checkIsFavorite(article: Article): Boolean {
             savedArticles.value?.forEach {
                 if (it.compare(article)) {
                     article.isFavorite = true
-                    return
+                    return@checkIsFavorite true
                 }
-                article.isFavorite = false
             }
+            article.isFavorite = false
+            return false
         }
 
-        override fun favorite(article: Article) {
-            if (article.isFavorite) {
+        override fun favorite(article: Article, context: Context?) {
+            if (checkIsFavorite(article)) {
                 launchTaskSync({
                     articleRepository.deleteLocalArticle(article)
                 }, {
                     article.isFavorite = false
                     getSavedArticles()
+                    context?.showToast(REMOVE_SUCCESS)
+                },{
+                    context?.showToast(REMOVE_FAIL)
                 })
             } else {
                 launchTaskSync({
@@ -51,13 +56,16 @@ class SavedViewModel(
                 }, {
                     article.isFavorite = true
                     getSavedArticles()
+                    context?.showToast(ADD_SUCCESS)
+                }, {
+                    context?.showToast(ADD_FAIL)
                 })
             }
         }
 
         override fun share(article: Article, context: Context) {
             val intent = Intent.createChooser(
-                Intent().apply{
+                Intent().apply {
                     action = Intent.ACTION_SEND
                     putExtra(Intent.EXTRA_SUBJECT, article.title)
                     putExtra(Intent.EXTRA_TEXT, article.url)
@@ -79,10 +87,9 @@ class SavedViewModel(
             Intent().apply {
                 action = Intent.ACTION_VIEW
                 data = Uri.parse(article.url)
-                startActivity(context,this, null)
+                startActivity(context, this, null)
             }
         }
-
     }
 
     fun getSavedArticles() {
@@ -104,5 +111,12 @@ class SavedViewModel(
         }, {
             article.isFavorite = it
         })
+    }
+
+    companion object {
+        const val ADD_SUCCESS = "Add successfully"
+        const val REMOVE_SUCCESS = "Remove successfully"
+        const val ADD_FAIL = "Add failed"
+        const val REMOVE_FAIL = "Remove failed"
     }
 }

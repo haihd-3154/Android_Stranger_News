@@ -15,3 +15,9 @@ fun String.coverToDateTime(pattern: String = DATETIME_FORMAT_MMMM_YYYY_DD_H_MM_A
         this
     }
 }
+
+fun String.getDateData(): IntArray {
+    val result = this.split("-")
+    return result.map { it.toIntOrNull() ?: 1 }.toIntArray()
+}
+

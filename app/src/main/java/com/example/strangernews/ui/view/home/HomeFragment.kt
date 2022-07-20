@@ -119,8 +119,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 }
             }
             errorResponse.observe(viewLifecycleOwner) {
-                context.showToast(it?.message.toString())
-                stopRefresh()
+                it?.apply {
+                    context?.showToast(it.message.toString ())
+                    stopRefresh()
+                }
             }
         }
     }

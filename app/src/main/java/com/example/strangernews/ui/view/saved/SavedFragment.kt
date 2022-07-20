@@ -15,6 +15,7 @@ import com.example.strangernews.ui.view.detail.DetailActivity
 import com.example.strangernews.ui.viewmodel.SavedViewModel
 import com.example.strangernews.utils.constant.Constants
 import com.example.strangernews.utils.extension.showArticleBottomSheet
+import com.example.strangernews.utils.extension.showToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SavedFragment : BaseFragment<FragmentSavedBinding>(FragmentSavedBinding::inflate),
@@ -76,9 +77,16 @@ class SavedFragment : BaseFragment<FragmentSavedBinding>(FragmentSavedBinding::i
     }
 
     private fun observerItem() {
-        viewModel.savedArticles.observe(viewLifecycleOwner) {
-            it?.let {
-                savedAdapterView.submitList(it.sortItems())
+        viewModel.apply {
+            savedArticles.observe(viewLifecycleOwner) {
+                it?.let {
+                    savedAdapterView.submitList(it.sortItems())
+                }
+            }
+            errorResponse.observe(viewLifecycleOwner){
+                it?.let{
+                    context?.showToast(it.message.toString())
+                }
             }
         }
     }

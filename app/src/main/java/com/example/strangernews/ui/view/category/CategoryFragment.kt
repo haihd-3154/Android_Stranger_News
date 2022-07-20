@@ -2,6 +2,7 @@ package com.example.strangernews.ui.view.category
 
 import android.content.Intent
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.example.strangernews.base.BaseFragment
 import com.example.strangernews.data.model.Article
 import com.example.strangernews.data.model.DataType
@@ -85,7 +86,9 @@ class CategoryFragment(
                 }
             }
             errorResponse.observe(viewLifecycleOwner) {
-                context.showToast(it?.message.toString())
+                it?.apply {
+                    context?.showToast(it.message.toString ())
+                }
             }
         }
     }
@@ -101,7 +104,10 @@ class CategoryFragment(
 
     private fun setPosition(position: Int) {
         binding?.viewpagerDatatype?.currentItem = position
-        viewModel.getArticlesByDataType(viewPagerAdapter.currentList[position])
+        viewPagerAdapter.currentList[position].let {
+            viewModel.getArticlesByDataType(it)
+            (activity as AppCompatActivity).supportActionBar?.title = it.name
+        }
     }
 
     private fun startLoading() {
