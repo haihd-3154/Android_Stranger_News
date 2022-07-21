@@ -3,8 +3,12 @@ package com.example.strangernews.data.source.local
 import com.example.strangernews.data.source.ArticleDataSource
 import com.example.strangernews.data.source.local.room.ArticleDAO
 import com.example.strangernews.data.model.Article
+import com.example.strangernews.data.source.local.datastore.DataStoreManager
+import kotlinx.coroutines.flow.Flow
 
-class ArticleLocalImpl(private val dao: ArticleDAO) : ArticleDataSource.Local {
+class ArticleLocalImpl(
+    private val dao: ArticleDAO,
+) : ArticleDataSource.Local {
 
     override suspend fun getLocalArticles(): List<Article> {
         return dao.getAllTrack()
@@ -15,6 +19,6 @@ class ArticleLocalImpl(private val dao: ArticleDAO) : ArticleDataSource.Local {
     }
 
     override suspend fun deleteArticle(article: Article) {
-       dao.delete(article)
+        dao.delete(article)
     }
 }

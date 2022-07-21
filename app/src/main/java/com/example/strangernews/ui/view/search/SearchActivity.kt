@@ -3,7 +3,6 @@ package com.example.strangernews.ui.view.search
 import android.database.Cursor
 import android.database.MatrixCursor
 import android.provider.BaseColumns
-import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.cursoradapter.widget.CursorAdapter
@@ -141,7 +140,7 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>(ActivitySearchBinding
         }
     }
 
-    companion object{
+    companion object {
         const val keywordName = "keywords"
     }
 }

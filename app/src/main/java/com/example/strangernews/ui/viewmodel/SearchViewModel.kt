@@ -8,23 +8,19 @@ import com.example.strangernews.base.BaseViewModel
 import com.example.strangernews.data.model.Article
 import com.example.strangernews.data.model.QueryData
 import com.example.strangernews.data.repository.ArticleRepository
-import com.example.strangernews.data.source.local.datastore.DataStoreManager
-import kotlinx.coroutines.CoroutineExceptionHandler
+import com.example.strangernews.data.repository.DataStoreRepository
 import kotlinx.coroutines.launch
 import org.koin.android.annotation.KoinViewModel
 
 @KoinViewModel
 class SearchViewModel(
     private val articleRepository: ArticleRepository,
-    private val datastore: DataStoreManager
+    private val dataStoreRepository: DataStoreRepository
 ) : BaseViewModel() {
 
     private val _listSearchArticle: MutableLiveData<List<Article>> = MutableLiveData()
-    private val datastoreException = CoroutineExceptionHandler { _, exception ->
-        errorResponse.postValue(exception)
-    }
     val listSearchArticle: LiveData<List<Article>> = _listSearchArticle
-    val history = datastore.searchHistory.asLiveData()
+    val history = dataStoreRepository.getSearchHistory().asLiveData()
 
     fun search(queryString: String) {
         launchTaskSync(
@@ -45,8 +41,8 @@ class SearchViewModel(
     }
 
     private fun addHistory(keywords: String) {
-        viewModelScope.launch(datastoreException) {
-            datastore.addSearchHistory(keywords)
+        safeCall{
+            dataStoreRepository.addSearchHistory(keywords)
         }
     }
 
