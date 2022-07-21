@@ -12,6 +12,7 @@ import com.example.strangernews.data.model.Article
 import com.example.strangernews.databinding.ActivitySearchBinding
 import com.example.strangernews.ui.adapter.ArticleMainAdapter
 import com.example.strangernews.ui.callback.ItemClickListener
+import com.example.strangernews.ui.viewmodel.SavedViewModel
 import com.example.strangernews.ui.viewmodel.SearchViewModel
 import com.example.strangernews.utils.extension.showArticleBottomSheet
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,6 +21,7 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>(ActivitySearchBinding
     SearchView.OnQueryTextListener, SearchView.OnSuggestionListener {
 
     private val searchVM: SearchViewModel by viewModel()
+    private val savedVM: SavedViewModel by viewModel()
     private val articleAdapter: ArticleMainAdapter by lazy {
         ArticleMainAdapter(object : ItemClickListener<Article> {
             override fun onItemClick(item: Article?) {
@@ -27,7 +29,7 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>(ActivitySearchBinding
 
             override fun onItemLongClick(item: Article?): Boolean {
                 item?.let {
-                    showArticleBottomSheet(it)
+                    showArticleBottomSheet(it, savedVM.listener)
                 }
                 return false
             }

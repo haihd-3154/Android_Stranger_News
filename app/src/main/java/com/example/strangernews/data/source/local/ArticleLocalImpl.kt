@@ -19,6 +19,10 @@ class ArticleLocalImpl(
     }
 
     override suspend fun deleteArticle(article: Article) {
-        dao.delete(article)
+        dao.delete(article.title)
+    }
+
+    override suspend fun checkIsFavorite(query: String): Boolean {
+        return dao.checkIsFavorite(query).isNotEmpty()
     }
 }

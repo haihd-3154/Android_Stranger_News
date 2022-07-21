@@ -1,14 +1,12 @@
 package com.example.strangernews.utils.extension
 
 import android.content.Context
-import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import coil.load
 import com.example.strangernews.R
 import com.example.strangernews.data.model.Article
 import com.example.strangernews.databinding.LayoutBottomSheetBinding
@@ -22,23 +20,14 @@ fun Context.getResourceColor(resource: Int) = ContextCompat.getColor(this, resou
 
 fun Context?.showToast(message: String): Toast? = Toast.makeText(this, message, Toast.LENGTH_SHORT)
 
-fun Context.showArticleBottomSheet(ar: Article, open: Boolean = true) {
+fun Context.showArticleBottomSheet(
+    ar: Article,
+    listener: ArticleBottomSheetCallback,
+    open: Boolean = true
+) {
+    listener.checkIsFavorite(ar)
     val bottomSheet = BottomSheetDialog(this)
     val binding = LayoutBottomSheetBinding.inflate(bottomSheet.layoutInflater)
-    val listener = object : ArticleBottomSheetCallback {
-        override fun favorite(article: Article) {
-        }
-
-        override fun share(article: Article) {
-        }
-
-        override fun open(article: Article) {
-        }
-
-        override fun browser(article: Article) {
-        }
-
-    }
     bottomSheet.setContentView(binding.root)
     binding.apply {
         includeItemFavorite.apply {
@@ -49,33 +38,37 @@ fun Context.showArticleBottomSheet(ar: Article, open: Boolean = true) {
                 itemIcon.loadByDrawableRes(R.drawable.ic_bookmark_add)
                 itemTitle.text = Constants.TXT_BOOKMARK_ADD
             }
-            layoutSheetItem.setOnClickListener {
+            itemIcon.setOnClickListener {
                 listener.favorite(ar)
+                bottomSheet.dismiss()
             }
         }
         includeItemShare.apply {
             itemIcon.loadByDrawableRes(R.drawable.ic_share)
             itemTitle.text = Constants.TXT_SHARE
-            layoutSheetItem.setOnClickListener {
-                listener.share(ar)
+            itemIcon.setOnClickListener {
+                listener.share(ar, this@showArticleBottomSheet)
+                bottomSheet.dismiss()
             }
         }
         includeItemOpen.apply {
             if (open) {
                 itemIcon.loadByDrawableRes(R.drawable.ic_pageview)
                 itemTitle.text = Constants.TXT_OPEN
-                layoutSheetItem.setOnClickListener {
-                    listener.open(ar)
+                itemIcon.setOnClickListener {
+                    listener.open(ar, this@showArticleBottomSheet)
+                    bottomSheet.dismiss()
                 }
             } else {
-                includeItemOpen.root.isVisible= false
+                includeItemOpen.root.isVisible = false
             }
         }
         includeItemBrowser.apply {
             itemIcon.loadByDrawableRes(R.drawable.ic_airplanemode)
             itemTitle.text = Constants.TXT_OPEN_BROWSER
-            layoutSheetItem.setOnClickListener {
-                listener.browser(ar)
+            itemIcon.setOnClickListener {
+                listener.browser(ar, this@showArticleBottomSheet)
+                bottomSheet.dismiss()
             }
         }
     }

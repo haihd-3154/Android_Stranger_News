@@ -53,7 +53,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         override fun onItemLongClick(item: Article?): Boolean {
             item?.let {
-                context?.showArticleBottomSheet(it)
+                context?.showArticleBottomSheet(it,savedVM.listener)
             }
             return false
         }

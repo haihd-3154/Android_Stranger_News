@@ -11,6 +11,7 @@ interface ArticleDataSource {
         suspend fun getLocalArticles(): List<Article>
         suspend fun insertArticle(article: Article)
         suspend fun deleteArticle(article: Article)
+        suspend fun checkIsFavorite(query: String): Boolean
     }
 
     interface Remote {

@@ -16,10 +16,18 @@
     <string name="recent">Recent</string>
     <string name="search_hint">Key words</string>
     <string name="more">More</string>
-    <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
     <string name="dark_mode">Dark mode</string>
     <string name="daily_news">Daily news</string>
     <string name="_08_00">08:00</string>
+    <string-array name="sort_array">
+        <item>Recent</item>
+        <item>Lasted</item>
+        <item>Author</item>
+        <item>Title</item>
+        <item>Languages</item>
+        <item>Countries</item>
+        <item>Sources</item>
+    </string-array>
 </resources>
