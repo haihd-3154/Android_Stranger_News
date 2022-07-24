@@ -21,7 +21,7 @@
         <activity
             android:name=".ui.view.SecondActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.view.detail.DetailActivity"
             android:exported="true"

@@ -11,6 +11,7 @@ import com.example.strangernews.ui.view.catelories.AllCategoryFragment
 import com.example.strangernews.ui.view.news.NewsFragment
 import com.example.strangernews.ui.view.saved.SavedFragment
 import com.example.strangernews.ui.view.setting.SettingFragment
+import com.example.strangernews.utils.extension.getResourceColor
 
 class SecondActivity : BaseActivity<ActivitySecondBinding>(ActivitySecondBinding::inflate) {
 
@@ -37,6 +38,7 @@ class SecondActivity : BaseActivity<ActivitySecondBinding>(ActivitySecondBinding
         binding?.apply{
             setSupportActionBar(toolbar)
             toolbar.apply {
+                setTitleTextColor(getResourceColor(R.color.color_black_3))
                 setNavigationIcon(R.drawable.ic_arrow_back)
                 setNavigationOnClickListener {
                     onBackPressed()

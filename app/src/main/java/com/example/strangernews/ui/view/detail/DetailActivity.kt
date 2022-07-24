@@ -13,6 +13,7 @@ import com.example.strangernews.data.model.Article
 import com.example.strangernews.databinding.ActivityDetailBinding
 import com.example.strangernews.ui.viewmodel.SavedViewModel
 import com.example.strangernews.utils.constant.Constants.ARTICLE_EXTRA
+import com.example.strangernews.utils.extension.getResourceColor
 import com.example.strangernews.utils.extension.showArticleBottomSheet
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -39,6 +40,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(ActivityDetailBinding
         binding?.apply {
             setSupportActionBar(toolbar)
             toolbar.apply {
+                setTitleTextColor(getResourceColor(R.color.color_black_3))
                 setNavigationIcon(R.drawable.ic_arrow_back)
                 setNavigationOnClickListener {
                     onBackPressed()

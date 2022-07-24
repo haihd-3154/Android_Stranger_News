@@ -2,6 +2,7 @@ package com.example.strangernews
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.work.WorkManager
 import com.example.strangernews.di.RepositoryModule
 import com.example.strangernews.di.ViewModelModule
 import org.koin.android.ext.koin.androidContext

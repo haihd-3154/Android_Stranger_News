@@ -1,5 +1,6 @@
 package com.example.strangernews.ui.view.setting
 
+import android.app.Notification
 import android.app.TimePickerDialog
 import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
@@ -7,19 +8,25 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.work.*
 import com.example.strangernews.base.BaseFragment
+import com.example.strangernews.data.model.Article
 import com.example.strangernews.databinding.FragmentSettingBinding
+import com.example.strangernews.ui.viewmodel.HomeViewModel
 import com.example.strangernews.ui.viewmodel.SettingViewModel
+import com.example.strangernews.utils.notification.NotificationWorker
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.concurrent.TimeUnit
 
 class SettingFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBinding::inflate) {
 
-    private val toolbarTitle = "Setting"
+    override val viewModel: SettingViewModel by viewModel()
     private var alertTime = "08:00"
     private var firstTime = false
-    override val viewModel: SettingViewModel by viewModel()
+    private var firstArticle : Article? = null
+    private val homeVM : HomeViewModel by viewModel()
 
     override fun initView() {
         collectData()
@@ -42,6 +49,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBind
                                     alertTime = "$hour:$minute"
                                     txtTime.text = alertTime
                                     viewModel.updateDailNew(boolean, alertTime)
+                                    createNotification(hour, minute)
                                 }
                             TimePickerDialog(
                                 context,
@@ -53,6 +61,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBind
                         }
                     } else {
                         viewModel.updateDailNew(boolean, alertTime)
+                        stopNotification()
                     }
                 }
             }
@@ -60,6 +69,13 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBind
     }
 
     override fun initData() {
+        observerItem()
+    }
+
+    private fun observerItem() {
+        homeVM.listArticles.observe(viewLifecycleOwner){
+            firstArticle= it?.first()
+        }
     }
 
     private fun checkAppMode(): Boolean =
@@ -72,6 +88,43 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBind
         when (value) {
             true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             false -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+    }
+
+    private fun createNotification(hour: Int, minute: Int){
+        activity?.apply{
+            val currentDate = Calendar.getInstance()
+            val dueDate = Calendar.getInstance()
+            dueDate.set(Calendar.HOUR_OF_DAY, hour)
+            dueDate.set(Calendar.MINUTE, minute)
+            dueDate.set(Calendar.SECOND, 0)
+            if (dueDate.before(currentDate)) {
+                dueDate.add(Calendar.HOUR_OF_DAY, 24)
+            }
+            val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
+            val constraints = Constraints.Builder()
+                .setRequiredNetworkType(NetworkType.CONNECTED)
+                .setRequiresBatteryNotLow(false)
+                .build()
+            val data = Data.Builder().apply {
+                put(NotificationWorker.TITLE_PARAM, firstArticle?.title)
+                put(NotificationWorker.URL_PARAM, firstArticle?.url)
+                put(NotificationWorker.DESCRIPTION_PARAM, firstArticle?.description)
+            }
+            val work = PeriodicWorkRequestBuilder<NotificationWorker>(1, TimeUnit.DAYS)
+                .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
+                .setConstraints(constraints)
+                .setInputData(data.build())
+                .build()
+            val workManager =WorkManager.getInstance(applicationContext)
+            workManager.enqueueUniquePeriodicWork(workTag, ExistingPeriodicWorkPolicy.REPLACE, work)
+        }
+    }
+
+    private fun stopNotification() {
+        activity?.apply{
+            val workManager =WorkManager.getInstance(applicationContext)
+            workManager.cancelAllWorkByTag(workTag)
         }
     }
 
@@ -93,6 +146,9 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBind
     }
 
     companion object {
+
+        private const val toolbarTitle = "Setting"
+        private const val workTag = "noti"
         @JvmStatic
         fun newInstance() = SettingFragment()
     }
